@@ -11,13 +11,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.InMemory
 {
-    /// <summary>
-    /// data erişim katmanı
-    /// suan inmemory çalışıyoruz kendimiz birden çok  user' bilgilerine sahip bir  liste oluşturup onun üstünde çalışıyoruz 
-    /// core katmanındaki  IInMemoryRepository<T> aynı operasyonel  işlemleri base olarak tutyor ilgili dal katmanının interface ekleniyor bu sayede aynı işlemleri tekrar tekra imzalamıyoruz
-    ///  
-    /// </summary>
-    public class UserDal:IUserDal
+   public class UserDal:IUserDal
     {
         List<User> _users;
         public UserDal()

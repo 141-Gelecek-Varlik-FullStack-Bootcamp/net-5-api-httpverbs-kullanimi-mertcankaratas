@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 namespace Entities.Concrete
 {
     public class User:IEntity
-    {   //Bir userda olması gereken bilgiler ve data annotation'lar
+    {   
         [Required]
         public int UserId { get; set; }
         [Required]
