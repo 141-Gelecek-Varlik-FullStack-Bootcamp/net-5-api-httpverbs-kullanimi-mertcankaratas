@@ -33,11 +33,10 @@ namespace WebAPI
 
             services.AddControllers();
 
-
+            
             services.AddSingleton<IUserService, UserManager>();
             services.AddSingleton<IUserDal, UserDal>();
-            //services.AddScoped<IUserService, UserManager>();
-            //services.AddScoped<IUserDal,UserDal>();
+           
 
             services.AddCors();
             services.AddHttpContextAccessor();
