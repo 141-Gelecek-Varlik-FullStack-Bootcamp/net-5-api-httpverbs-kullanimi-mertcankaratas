@@ -1,5 +1,5 @@
 ﻿using Core.DataAccess.InMemory;
-using Core.Entities;
+
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -13,16 +13,16 @@ namespace DataAccess.Concrete.InMemory
 {
    public class UserDal:IUserDal
     {
-       public List<User> _users;
+        List<User> _users;
         public UserDal()
         {
             _users = new List<User>
             {
                 new User{UserId=1,UserName="Mertcan",Email="can.mert.karatas@gmail.com",password="a1b2c3d4e5"},
-                new User{UserId=1,UserName="Burak",Email="burak@gmail.com",password="a1b2c3d4e5"},
-                new User{UserId=1,UserName="Can",Email="can@gmail.com",password="a1b2c3d4e5"},
-                new User{UserId=1,UserName="Veli",Email="veli@gmail.com",password="a1b2c3d4e5"},
-                new User{UserId=1,UserName="Ali",Email="ali@gmail.com",password="a1b2c3d4e5"}
+                new User{UserId=2,UserName="Burak",Email="burak@gmail.com",password="a1b2c3d4e5"},
+                new User{UserId=3,UserName="Can",Email="can@gmail.com",password="a1b2c3d4e5"},
+                new User{UserId=4,UserName="Veli",Email="veli@gmail.com",password="a1b2c3d4e5"},
+                new User{UserId=5,UserName="Ali",Email="ali@gmail.com",password="a1b2c3d4e5"}
             };
         }
 
@@ -33,14 +33,14 @@ namespace DataAccess.Concrete.InMemory
 
         public void Delete(User entity)
         {
-            var itemRemove = _users.Single(d => d.UserId == entity.UserId);
-            _users.Remove(itemRemove);
+            var itemRemove = _users.Where(d => d.UserId == entity.UserId).Any();
+            var itemRemoveElement = _users.SingleOrDefault(d => d.UserId == entity.UserId);
+
+            if (itemRemove)
+                _users.Remove(itemRemoveElement);
         }
 
-        public List<User> Get(Expression<Func<User, bool>> filter)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public User Get(int id)
         {

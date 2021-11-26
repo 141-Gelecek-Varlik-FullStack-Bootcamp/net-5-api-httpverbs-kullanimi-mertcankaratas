@@ -1,3 +1,7 @@
+using Business.Abstract;
+using Business.Concrete;
+using DataAccess.Abstract;
+using DataAccess.Concrete.InMemory;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,6 +32,15 @@ namespace WebAPI
         {
 
             services.AddControllers();
+
+
+            services.AddSingleton<IUserService, UserManager>();
+            services.AddSingleton<IUserDal, UserDal>();
+            //services.AddScoped<IUserService, UserManager>();
+            //services.AddScoped<IUserDal,UserDal>();
+
+            services.AddCors();
+            services.AddHttpContextAccessor();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI", Version = "v1" });
@@ -44,6 +57,7 @@ namespace WebAPI
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPI v1"));
             }
 
+            
             app.UseHttpsRedirection();
 
             app.UseRouting();
