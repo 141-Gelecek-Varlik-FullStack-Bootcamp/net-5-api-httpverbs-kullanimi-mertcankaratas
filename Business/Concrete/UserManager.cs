@@ -9,6 +9,13 @@ using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
+    /// <summary>
+    /// iş katmanı
+    /// burada yapılacak işleri direk verdiğimiz kısım api tarafındaki controller'lardan direk burası ile çalışırız bu da ilgili işi yapmak için diğer katmanlara başvurur
+    /// SOLID presiplerinden S harfi (single of responsibility - Tek sorumluluk ilkesi)katı bir şekilde geçerlidir. Bir method bir iş  yapar. 
+    /// if suistimali yapılmamalıdır. 
+    /// 
+    /// </summary>
     public class UserManager : IUserService
     {
         IUserDal _userDal;

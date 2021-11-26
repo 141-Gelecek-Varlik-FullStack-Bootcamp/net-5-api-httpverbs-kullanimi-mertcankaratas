@@ -17,12 +17,14 @@ namespace WebAPI.Controllers
     public class UserController : ControllerBase
     {
         IUserService _userService;
-
+        //constructor injection 
         public UserController(IUserService userService)
         {
             _userService = userService;
         }
 
+
+        //Sistemde olan tüm kullanıcıları listeler 
         [HttpGet("getall")]
         public IActionResult Getall()
         {
@@ -35,11 +37,11 @@ namespace WebAPI.Controllers
             return BadRequest("Herhangi bir kullanıcı bulunmamaktadır.");
         }
 
-
+        //Bir kullanıcıyı eklemek için kullanılır
         [HttpPost("add")]
         public IActionResult Add(User user)
         {
-            if (user!=null)
+            if (user != null)
             {
                 _userService.Add(user);
                 return Ok("Kullanıcı Eklendi");
@@ -49,6 +51,7 @@ namespace WebAPI.Controllers
         }
 
 
+        //Bir kullanıcıyı silmek için kullanılır
         [HttpDelete("delete")]
         public IActionResult Delete(User user)
         {
@@ -61,6 +64,7 @@ namespace WebAPI.Controllers
             return BadRequest("Girilen kullanıcı id'sine ait bir kayıt bulunmamaktadır. Silinemedi...");
         }
 
+        //Bir kullanıcıyı güncellemek için kullanılır
         [HttpPut("update")]
         public IActionResult Update(User user)
         {
